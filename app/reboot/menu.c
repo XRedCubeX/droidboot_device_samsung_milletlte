@@ -38,11 +38,11 @@ static void handle_timeout() {
 	int i;
 	int num_iters = global_config.timeout * 1000 / 100; // times 1000 - sec to msec; divided by 100 - see "lower cpu stress"
 
-	fbcon_draw_text(20, 20, TIMEOUT_TEXT, TIMEOUT_TEXT_SCALE, 0xFF0000);
+	fbcon_draw_text(20, 20, TIMEOUT_TEXT, TIMEOUT_TEXT_SCALE, global_config.fcolor);
 
 	for (i = 0; i < num_iters; i++) {
 		if (target_volume_down()) {
-			fbcon_draw_text(20, 20, TIMEOUT_TEXT, TIMEOUT_TEXT_SCALE, 0x808080);
+			fbcon_draw_text(20, 20, TIMEOUT_TEXT, TIMEOUT_TEXT_SCALE, global_config.fcolor);
 			return; //continue to boot menu
 		}
 		thread_sleep(100); //lower cpu stress
@@ -91,40 +91,46 @@ static void draw_menu(void) {
 
 	uint32_t highlight_color;
 	uint32_t font_color;
-	fbcon_draw_filled_rectangle(0, 0, max_width, max_height, 0x808080);
-	fbcon_draw_rectangle(margin_x, margin_y, frame_width, frame_height, 0x000080);
-	fbcon_draw_rectangle(margin_x+1, margin_y+1, frame_width-1, frame_height-1, 0x000080);
-	fbcon_draw_text((max_width/2)-ACTUAL_FONT_WIDTH*8, 5, "Boot Menu", BOOT_ENTRY_SCALE, 0xFFFFFF);
+	fbcon_draw_filled_rectangle(0, 0, max_width, max_height, global_config.bgcolor);
+	fbcon_draw_rectangle(margin_x, margin_y, frame_width, frame_height, global_config.fcolor);
+	fbcon_draw_text((max_width/2)-ACTUAL_FONT_WIDTH*8, 5, "Boot Menu", BOOT_ENTRY_SCALE, global_config.fscolor);
 	int i;
 	for (i = 0; i < num_of_boot_entries; i++) {
 		if(i == selected_option)
-			font_color= 0xFFFFFF;
+			{
+			font_color= global_config.fscolor;
+			highlight_color= global_config.entscolor;
+			}
 		else
-			font_color = 0x000080;
+			{
+			font_color = global_config.fcolor;
+			highlight_color= global_config.entcolor;
+			}
 
-	//	if((entry_list + i)->error)
-		//	font_color = 0x00FF00;
-		//else
-			//font_color = 0x000080;
 
-	//	fbcon_draw_filled_rectangle(margin_x + 8, (margin_y + 8) + i * (ACTUAL_FONT_HEIGHT + 4) - 1, frame_width - (2 * 8), 2 + ACTUAL_FONT_HEIGHT + 2, 0x808080);
+		fbcon_draw_filled_rectangle(margin_x + 8, (margin_y + 8) + i * (ACTUAL_FONT_HEIGHT + 4) - 1, frame_width - (2 * 8), 2 + ACTUAL_FONT_HEIGHT + 2, highlight_color);
 		fbcon_draw_text(margin_x + 10, (margin_y + 10) + i * (ACTUAL_FONT_HEIGHT + 20), (entry_list + i)->title, BOOT_ENTRY_SCALE, font_color);
 	}
 
 	uint32_t separator_y = (margin_y + 8) + i * (ACTUAL_FONT_HEIGHT + 4) + 40;
 
-	fbcon_draw_horizontal_line(margin_x + 8, (margin_x + 8) + (frame_width - (2 * 8)), separator_y, 0x000080);
+	fbcon_draw_horizontal_line(margin_x + 8, (margin_x + 8) + (frame_width - (2 * 8)), separator_y, global_config.fcolor);
 
 	for (i = 0; i < HARDCODED_ENTRY_COUNT; i++) {
 
 		if((i + num_of_boot_entries) == selected_option)
-			font_color = 0xFFFFFF;
+			{
+			font_color = global_config.fscolor;
+			highlight_color= global_config.entscolor;
+			}
 		else
-			font_color =  0x000080;
+			{
+			font_color =  global_config.fcolor;
+			highlight_color= global_config.entcolor;
+			}
+		
 
-		//font_color = 0x000080;
-
-	//	fbcon_draw_filled_rectangle(margin_x + 8, (separator_y + 3) + i * (ACTUAL_FONT_HEIGHT + 4), frame_width - (2 * 8), 2 + ACTUAL_FONT_HEIGHT + 2, highlight_color);
+		fbcon_draw_filled_rectangle(margin_x + 8, (separator_y + 3) + i * (ACTUAL_FONT_HEIGHT + 4), frame_width - (2 * 8), 2 + ACTUAL_FONT_HEIGHT + 2, highlight_color);
 		fbcon_draw_text(margin_x + 10, (separator_y + 5) + i * (ACTUAL_FONT_HEIGHT + 4), hardcoded_entry_list[i].title, BOOT_ENTRY_SCALE, font_color);
 	}
 
@@ -166,11 +172,11 @@ static bool handle_keys(void) {
 	if(power_button_pressed) {
 		if(selected_option < num_of_boot_entries) {
 			struct boot_entry *entry = entry_list + selected_option;
-			fbcon_draw_filled_rectangle(0, 0, max_width, max_height, 0x808080);
+			fbcon_draw_filled_rectangle(0, 0, max_width, max_height, global_config.bgcolor);
 			char *result = malloc(strlen("Booting ") + strlen(entry->title) + 1); 
     		strcpy(result, "Booting ");
     		strcat(result, entry->title);
-			fbcon_draw_text(0, max_height/2, result, BOOT_ENTRY_SCALE, 0xFFFFFF);
+			fbcon_draw_text(0, max_height/2, result, BOOT_ENTRY_SCALE, global_config.fcolor);
 			boot_to_entry(entry);
 		}
 		else {

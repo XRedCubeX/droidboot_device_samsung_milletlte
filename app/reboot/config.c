@@ -228,6 +228,40 @@ int parse_global_config(struct global_config *global_config) {
 
 	global_config->timeout = atoi(timeout);
 
+	char *bgcolor = NULL;
+	ret = config_parse_option(&bgcolor, "bgcolor", (const char *)buf);
+	if(ret < 0) {
+		printf("SYNTAX ERROR: lk2nd.conf - no option 'bgcolor'\n");
+	}
+	global_config->bgcolor = atoi(bgcolor);
+
+	char *fcolor = NULL;
+	ret = config_parse_option(&fcolor, "fcolor", (const char *)buf);
+	if(ret < 0) {
+		printf("SYNTAX ERROR: lk2nd.conf - no option 'fcolor'\n");
+	}
+	global_config->fcolor = atoi(fcolor);
+
+	char *fscolor = NULL;
+	ret = config_parse_option(&fscolor, "fscolor", (const char *)buf);
+	if(ret < 0) {
+		printf("SYNTAX ERROR: lk2nd.conf - no option 'fscolor'\n");
+	}
+	global_config->fscolor = atoi(fscolor);
+
+	char *entcolor = NULL;
+	ret = config_parse_option(&entcolor, "entcolor", (const char *)buf);
+	if(ret < 0) {
+		printf("SYNTAX ERROR: lk2nd.conf - no option 'entcolor'\n");
+	}
+	global_config->entcolor = atoi(entcolor);
+
+	char *entscolor = NULL;
+	ret = config_parse_option(&entscolor, "entscolor", (const char *)buf);
+	if(ret < 0) {
+		printf("SYNTAX ERROR: lk2nd.conf - no option 'entscolor'\n");
+	}
+	global_config->entscolor = atoi(entscolor);
 	fs_unmount("/boot");
 
 	return 0;

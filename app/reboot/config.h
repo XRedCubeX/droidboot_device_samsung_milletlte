@@ -4,6 +4,11 @@ struct global_config {
 	char *default_entry_title;
 	struct boot_entry *default_entry;
 	int timeout;
+	char *bgcolor;
+    char *fcolor;
+	char *fscolor;
+	char *entcolor;
+	char *entscolor;
 };
 
 
