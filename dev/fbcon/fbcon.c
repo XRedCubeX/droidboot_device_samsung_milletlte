@@ -687,3 +687,5 @@ void fbcon_draw_text(unsigned int x, unsigned int y, const char *text, unsigned 
 		i++;
 	}
 }
+
+

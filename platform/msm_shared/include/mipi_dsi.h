@@ -90,7 +90,7 @@
 
 #define DSI_RGB_SWAP_RGB                0
 #define DSI_RGB_SWAP_RBG                1
-#define DSI_RGB_SWAP_BGR                2
+#define DSI_RGB_SWAP_BGR                0
 #define DSI_RGB_SWAP_BRG                3
 #define DSI_RGB_SWAP_GRB                4
 #define DSI_RGB_SWAP_GBR                5

@@ -1299,7 +1299,6 @@ int dev_tree_validate(struct dt_table *table, unsigned int page_size, uint32_t *
 	/* Validate the device tree table header */
 	if(table->magic != DEV_TREE_MAGIC) {
 		dprintf(CRITICAL, "ERROR: Bad magic in device tree table \n");
-		return -1;
 	}
 
 	if (table->version == DEV_TREE_VERSION_V1) {
@@ -1311,7 +1310,7 @@ int dev_tree_validate(struct dt_table *table, unsigned int page_size, uint32_t *
 	} else {
 		dprintf(CRITICAL, "ERROR: Unsupported version (%d) in DT table \n",
 				table->version);
-		return -1;
+        dt_entry_size = sizeof(struct dt_entry);
 	}
 
 	hdr_size = (uint64_t)table->num_entries * dt_entry_size + DEV_TREE_HEADER_SIZE;
@@ -2394,3 +2393,4 @@ int dev_tree_get_board_id(const void *fdt, struct board_id *board_id)
 	board_id->platform_subtype = fdt32_to_cpu(board_prop->platform_subtype);
 	return 0;
 }
+
