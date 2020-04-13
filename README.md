@@ -28,7 +28,7 @@ and then loaded by lk2nd.
 - Samsung Galaxy A6+ (2018) HW.Rev.4
 - Xiaomi Redmi Note 4X Snapdragon - mido
 - Moto G5 - cedric
-- Xiaomi ??? - santoni
+- Xiaomi Redmi 4X - santoni
 
 ## Installation
 1. Download `lk2nd.img` (available in [Releases](https://github.com/msm8916-mainline/lk2nd/releases)(MSM8916))
