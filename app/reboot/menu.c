@@ -65,10 +65,9 @@ void FUGLY_default_boot_function()
 // end of FUGLY
 void boot_from_mmc(void);
 void boot_recovery_from_mmc(void);
-#define HARDCODED_ENTRY_COUNT 2
+#define HARDCODED_ENTRY_COUNT 1
 struct hardcoded_entry hardcoded_entry_list[HARDCODED_ENTRY_COUNT] = {
 	{.title = "'recovery' partition", .function = boot_recovery_from_mmc},
-	{.title = "power off", .function = shutdown_device}
 };
 
 #define BOOT_ENTRY_SCALE 6
