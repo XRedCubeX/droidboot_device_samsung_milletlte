@@ -12,6 +12,8 @@ boot image and then loaded by the stock bootloader as a "secondary" bootloader.
 The real Android boot image is placed into the boot partition with 1 MB offset,
 and then loaded by lk2nd.
 
+Important: This fork is used by Android Boot Manager and has code specific to it. It will not work without. Take a look at https://github.com/Junak/lk2nd
+
 ## Supported SoCs
 - MSM8916
 - MSM8953 (SDM450,SDM625)
