@@ -16,6 +16,7 @@ Important: This fork is used by Android Boot Manager and has code specific to it
 
 ## Supported SoCs
 - MSM8916
+- MSM8952
 - MSM8953 (SDM450,SDM625)
 
 ### Supported devices
