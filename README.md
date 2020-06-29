@@ -86,3 +86,4 @@ Replace `TOOLCHAIN_PREFIX` with the path to your tool chain.
 
 ## Contact
 Ping `minecrell`/`Mis012` on [`#postmarketos-mainline`](https://wiki.postmarketos.org/wiki/Matrix_and_IRC).
+# droidboot_device_samsung_milletlte
