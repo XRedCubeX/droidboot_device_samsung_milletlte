@@ -16,6 +16,7 @@ Important: This fork is used by Android Boot Manager and has code specific to it
 
 ## Supported SoCs
 - MSM8916
+- MSM8226/MSM8926
 - MSM8952
 - MSM8953 (SDM450,SDM625)
 
@@ -27,6 +28,7 @@ Important: This fork is used by Android Boot Manager and has code specific to it
 - Samsung Galaxy S4 Mini Value Edition - GT-I9195I
 - Samsung Galaxy Tab A 8.0 LTE (2015) - SM-T357W
 - Samsung Galaxy Tab A 9.7 WiFi (2015) - SM-T550
+- Samsung Galaxy Tab 4 8.0 LTE - SM-T550 (Not booting for now)
 - Wileyfox Swift
 - Samsung Galaxy A6+ (2018) HW.Rev.4
 - Xiaomi Redmi Note 4X Snapdragon - mido
@@ -86,4 +88,3 @@ Replace `TOOLCHAIN_PREFIX` with the path to your tool chain.
 
 ## Contact
 Ping `minecrell`/`Mis012` on [`#postmarketos-mainline`](https://wiki.postmarketos.org/wiki/Matrix_and_IRC).
-# droidboot_device_samsung_milletlte
