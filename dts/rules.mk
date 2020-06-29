@@ -19,3 +19,7 @@ ifeq ($(PROJECT), msm8952-secondary)
 DTBS += \
     $(LOCAL_DIR)/msm8937-motorola-cedric.dtb
 endif
+ifeq ($(PROJECT), msm8226-secondary)
+DTBS += \
+	$(LOCAL_DIR)/msm8926-sec-milletlte-r00.dtb
+endif

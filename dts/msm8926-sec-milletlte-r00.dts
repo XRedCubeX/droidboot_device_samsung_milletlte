@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+/dts-v1/;
+
+/include/ "msm8926.dtsi"
+
+/ {
+	qcom,msm-id = <0xC808FF01 0 0x10001>;
+	qcom,board-id = <8 0>;
+
+	model = "[MILLET-LTE-OPEN] Rev-00-MTP-v1";
+	compatible = "com,msm8226-mtp", "qcom,msm8226", "qcom,mtp", "lk2nd,device";
+	lk2nd,uart = <1>;
+};

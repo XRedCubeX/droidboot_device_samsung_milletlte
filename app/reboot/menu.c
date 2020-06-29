@@ -145,8 +145,8 @@ extern int target_volume_up();
 static bool handle_keys(void) {
 	uint32_t max_width = fbcon_get_width() - 1;
 	uint32_t max_height = fbcon_get_height() - 1;
-	uint32_t volume_up_pressed = target_volume_up();
-	uint32_t volume_down_pressed = target_volume_down();
+	uint32_t volume_up_pressed = false;
+	uint32_t volume_down_pressed = false;
 	uint32_t power_button_pressed = pm8x41_get_pwrkey_is_pressed();
 
 	//FUGLY
